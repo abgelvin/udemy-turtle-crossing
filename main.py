@@ -28,14 +28,15 @@ while game_is_on:
     
     #Detect collision with car
     for car in manager.all_cars:
-        if player.distance(car) <20:
+        if player.distance(car) < 20:
             game_is_on = False
             scoreboard.game_over()
 
-    if player.ycor() > 270:
+    #Detect successful run
+    if player.is_at_finish():
         scoreboard.increase_score()
-        player.goto(player.starting_position)
-        manager.move_distance += manager.move_increment
+        player.go_to_start()
+        manager.level_up()
     
 
 
